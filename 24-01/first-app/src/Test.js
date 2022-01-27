@@ -1,18 +1,33 @@
-import React, { Component } from "react";
+import React from "react";
 import "./Test.css";
+import PropTypes from "prop-types";
 
-class Test extends Component {
-  name = this.props.name ?? "Shantanu Shubham";
+const Test = ({ user, setPhoneNumber }) => {
+  return (
+    <div>
+      <h2>This is {user.name}</h2>
+      <h1>
+        {user.name}'s Phone Number is: {user.phoneNumber}. Hit them up!
+      </h1>
+      <button
+        onClick={(e) => {
+          console.log("Button clicked");
+          setPhoneNumber("123456789");
+        }}
+      >
+        Change Number
+      </button>
+    </div>
+  );
+};
 
-  render() {
-    return <h1>This is {this.name}</h1>;
-  }
-}
-
-// const Test = ({ name = "Shantanu Shubham" }) => {
-//   return <h1>This is {name}</h1>;
-// };
+Test.propTypes = {
+  user: PropTypes.object.isRequired,
+  setPhoneNumber: PropTypes.func.isRequired,
+};
 
 export default Test;
 
-Component component = new Test();
+// A   testVariable (not a state)  setTestVariable(val) {this.testVariable = val}
+// |
+// B   setTestVariable("Tanisha")

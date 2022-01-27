@@ -1,17 +1,27 @@
 import React from "react";
 import Test from "./Test";
 
-const App = ({ name }) => {
-  let array = [name, name, name, "Pawan Pareek"];
+class App extends React.Component {
+  state = {
+    name: "Kamdev Kumar",
+    age: 20,
+    phoneNumber: "9638527410",
+  };
 
-  return (
-    <div>
-      {array.map((nameInArray, index) => {
-        return <Test key={index} name={nameInArray} />;
-      })}
-    </div>
-  );
-};
+  constructor(props) {
+    super(props);
+    this.setPhoneNumber = this.setPhoneNumber.bind(this);
+  }
+
+  setPhoneNumber(phoneNumber) {
+    console.log(this);
+    this.setState({ ...this.state, phoneNumber });
+  }
+
+  render() {
+    return <Test user={this.state} setPhoneNumber={this.setPhoneNumber} />;
+  }
+}
 
 export default App;
 
@@ -22,3 +32,6 @@ export default App;
 //             div
 //      /     /   \    \
 //    Test  Test   Test  Test
+
+// [][{name: Devansh}][][][][][][][][][][]
+//         state
