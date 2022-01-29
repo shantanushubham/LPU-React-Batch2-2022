@@ -1,37 +1,26 @@
-import React from "react";
-import Test from "./Test";
+import React, { Component } from "react";
+import SumComponent from "./components/SumComponent";
 
-class App extends React.Component {
+class App extends Component {
   state = {
-    name: "Kamdev Kumar",
-    age: 20,
-    phoneNumber: "9638527410",
+    isSumComponentVisible: false,
   };
 
-  constructor(props) {
-    super(props);
-    this.setPhoneNumber = this.setPhoneNumber.bind(this);
-  }
-
-  setPhoneNumber(phoneNumber) {
-    console.log(this);
-    this.setState({ ...this.state, phoneNumber });
-  }
+  handleVisibilityChange = (e) => {
+    this.setState({
+      isSumComponentVisible: !this.state.isSumComponentVisible,
+    });
+  };
 
   render() {
-    return <Test user={this.state} setPhoneNumber={this.setPhoneNumber} />;
+    return (
+      <>
+        <h1>This is App Component</h1>
+        <button onClick={this.handleVisibilityChange}>Toggle</button>
+        <SumComponent />
+      </>
+    );
   }
 }
 
 export default App;
-
-//            index
-//              |
-//             App
-//              |
-//             div
-//      /     /   \    \
-//    Test  Test   Test  Test
-
-// [][{name: Devansh}][][][][][][][][][][]
-//         state
