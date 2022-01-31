@@ -21,10 +21,23 @@ let tasks = [
   },
 ];
 
+let testFunction = () => {
+  return [
+    1,
+    () => {
+      console.log("Rajnish");
+    },
+  ];
+};
+
+let [number, testName] = testFunction();
+// console.log(testName);
+testName()
+
 // Create 2 react components
 // 1. AllTaskScreen
 // You have to fetch all tasks and show on the screen
 // Every task has a delete button, which when clicked, the task is deleted!
-// console.log("Task was deleted") using Component Did Update 
+// console.log("Task was deleted") using Component Did Update
 // 2. Task
 // You have to show all details of any task based on their taskNumber

@@ -1,26 +1,41 @@
-import React, { Component } from "react";
+import React from "react";
+import {
+  BrowserRouter,
+  Outlet,
+  Route,
+  Routes as RouteContainer,
+} from "react-router-dom";
+import Header from "./components/Header";
+import SignUpForm from "./components/SignUpForm";
 import SumComponent from "./components/SumComponent";
 
-class App extends Component {
-  state = {
-    isSumComponentVisible: false,
-  };
-
-  handleVisibilityChange = (e) => {
-    this.setState({
-      isSumComponentVisible: !this.state.isSumComponentVisible,
-    });
-  };
-
-  render() {
-    return (
-      <>
-        <h1>This is App Component</h1>
-        <button onClick={this.handleVisibilityChange}>Toggle</button>
-        <SumComponent />
-      </>
-    );
-  }
-}
+const App = () => {
+  return (
+    <div>
+      <BrowserRouter>
+        <Header />
+        <RouteContainer>
+          <Route path={"/"} element={<h1>This is home page</h1>} />
+          <Route path={"/about"} element={<h1>This is about page</h1>} />
+          <Route path={"/contact"} element={<h1>This is contact page</h1>} />
+          <Route path={"/signup"} element={<SignUpForm />}>
+            <Route
+              path={"test"}
+              element={
+                <>
+                  <h1>Test</h1>
+                  <Outlet />
+                </>
+              }
+            >
+              <Route path={"help"} element={<h1>Help</h1>} />
+            </Route>
+          </Route>
+          <Route path={"*"} element={<h1>404</h1>} />
+        </RouteContainer>
+      </BrowserRouter>
+    </div>
+  );
+};
 
 export default App;
