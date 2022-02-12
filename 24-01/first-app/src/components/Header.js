@@ -7,6 +7,7 @@ const Header = () => (
     <Link to={"/about"}>About</Link>
     <Link to={"/contact"}>Contact</Link>
     <Link to={"/signup"}>Sign Up</Link>
+    <Link to={"/redux-counter"}>Redux Counter</Link>
   </nav>
 );
 

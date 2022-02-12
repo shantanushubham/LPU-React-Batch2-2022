@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { Outlet } from "react-router-dom";
 import { isValidUser } from "../validator";
 
-const SignUpForm = () => {
+const SignUpForm = ({ count }) => {
   const [state, setState] = useState({
     firstName: "",
     lastName: "",
@@ -57,12 +58,13 @@ const SignUpForm = () => {
       />
       <button type={"submit"}>Sign Up</button>
       {error && <span style={{ color: "red" }}>{error}</span>}
+      <h2>The count is: {count}</h2>
       <Outlet />
     </form>
   );
 };
 
-export default SignUpForm;
+export default connect((state) => ({ count: state.count }))(SignUpForm);
 
 // [useState][][][][][][][]
 //  state   tempState

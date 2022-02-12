@@ -1,6 +1,8 @@
 import React, { useReducer } from "react";
+import ChildComponent from "./ChildComponent";
 import higherOrderComponent from "./HOC";
 import LOC from "./LOC";
+import { AnupamaContext } from "../App";
 
 const [INCREMENT, DECREMENT] = ["INCREMENT", "DECREMENT"];
 
@@ -36,6 +38,7 @@ const Counter = () => {
         Decrease
       </button>
       <LowerOrder />
+      <ChildComponent />;
     </>
   );
 };
